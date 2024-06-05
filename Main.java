@@ -1,59 +1,43 @@
-abstract class Shape {
-    abstract double calculateArea();
-    abstract double calculatePerimeter();
+
+interface Drawable {
+    void draw();
 }
 
-class Circle2 extends Shape {
-    private double radius;
 
-    Circle2(double radius) {
-        this.radius = radius;
-    }
-
-    @Override
-    double calculateArea() {
-        return Math.PI * radius * radius;
-    }
-
-    @Override
-    double calculatePerimeter() {
-        return 2 * Math.PI * radius;
-    }
-
-	public void draw() {
-		// TODO Auto-generated method stub
-		
-	}
+interface Resizable {
+    void resize(double factor);
 }
 
-class Rectangle1 extends Shape {
-    private double length;
-    private double width;
+class Shape implements Drawable, Resizable {
+    private String name;
 
-    Rectangle1(double length, double width) {
-        this.length = length;
-        this.width = width;
+    // Constructor
+    public Shape(String name) {
+        this.name = name;
     }
 
+    // Implementation of draw method from Drawable interface
     @Override
-    double calculateArea() {
-        return length * width;
+    public void draw() {
+        System.out.println("Drawing " + name);
     }
 
+    // Implementation of resize method from Resizable interface
     @Override
-    double calculatePerimeter() {
-        return 2 * (length + width);
+    public void resize(double factor) {
+        System.out.println(name + " resized by factor " + factor);
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Circle circle = new Circle(5);
-        System.out.println("Circle Area: " + circle.calculateArea());
-        System.out.println("Circle Perimeter: " + circle.calculatePerimeter());
+        // Create a Shape object
+        Shape shape = new Shape("Rectangle");
 
-        Rectangle1 rectangle = new Rectangle1(4, 6);
-        System.out.println("Rectangle Area: " + rectangle.calculateArea());
-        System.out.println("Rectangle Perimeter: " + rectangle.calculatePerimeter());
+        // Call draw method
+        shape.draw();
+
+        // Call resize method
+        shape.resize(1.5);
     }
 }
