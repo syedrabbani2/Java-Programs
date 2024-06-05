@@ -1,24 +1,22 @@
-public class SumOfDigits {
+import java.util.Scanner;
 
-    public static int sumOfDigits(int number) {
-        int sum = 0;
-        
-        
-        while (number > 0) {
-            
-            int digit = number % 10;
-            
-            sum += digit;
-            
-            number /= 10;
-        }
-        
-        return sum;
-    }
-    
+public class SumOfDigits{
     public static void main(String[] args) {
-        int number = 12345;
-        int sum = sumOfDigits(number);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a positive integer: ");
+        int number = scanner.nextInt();
+
+        int sum = calculateSumOfDigits(number);
+
         System.out.println("Sum of digits of " + number + " is: " + sum);
+    }
+
+    public static int calculateSumOfDigits(int number) {
+        if (number == 0) {
+            return 0;
+        } else {
+            return number % 10 + calculateSumOfDigits(number / 10);
+        }
     }
 }

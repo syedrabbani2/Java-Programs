@@ -4,30 +4,28 @@ public class CompoundInterest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the principal amount:");
+        System.out.print("Enter principal amount: ");
         double principal = scanner.nextDouble();
 
-        System.out.println("Enter the annual interest rate (in percentage):");
+        System.out.print("Enter the interest rate (in percentage): ");
         double rate = scanner.nextDouble();
 
-        System.out.println("Enter the number of years:");
-        int years = scanner.nextInt();
+        System.out.print("Enter the time period (in years): ");
+        double time = scanner.nextDouble();
 
-        System.out.println("Enter the number of times interest is compounded per year:");
-        int n = scanner.nextInt();
+        double compoundInterest = calculateCompoundInterest(principal, rate, time);
 
-        double amount = calculateCompoundInterest(principal, rate, years, n);
-        double interest = amount - principal;
-
-        System.out.println("Compound Interest after " + years + " years: " + interest);
-        System.out.println("Total Amount after " + years + " years: " + amount);
-
-        
+        System.out.println("Compound Interest after " + time + " years: " + compoundInterest);
     }
 
-    public static double calculateCompoundInterest(double principal, double rate, int years, int n) {
-        double r = rate / 100;
-        double amount = principal * Math.pow(1 + (r / n), n * years);
-        return amount;
+    public static double calculateCompoundInterest(double principal, double rate, double time) {
+        
+        rate = 100;
+
+        
+        double amount = principal * Math.pow(1 + rate, time);
+        double compoundInterest = amount - principal;
+
+        return compoundInterest;
     }
 }

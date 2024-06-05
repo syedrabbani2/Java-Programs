@@ -4,20 +4,19 @@ public class AreaOfRegularPolygon {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the number of sides of the regular polygon:");
-        int n = scanner.nextInt();
+        System.out.print("Enter the number of sides of the regular polygon: ");
+        int numSides = scanner.nextInt();
 
-        System.out.println("Enter the length of each side of the regular polygon:");
-        double s = scanner.nextDouble();
+        System.out.print("Enter the length of each side of the regular polygon: ");
+        double sideLength = scanner.nextDouble();
 
-        double area = calculateRegularPolygonArea(n, s);
+        double area = calculateRegularPolygonArea(numSides, sideLength);
 
         System.out.println("The area of the regular polygon is: " + area);
-
-        
     }
 
-    public static double calculateRegularPolygonArea(int n, double s) {
-        return (n * Math.pow(s, 2)) / (4 * Math.tan(Math.PI / n));
+    public static double calculateRegularPolygonArea(int numSides, double sideLength) {
+        double area = 0.25 * numSides * sideLength * sideLength / Math.tan(Math.PI / numSides);
+        return area;
     }
 }
