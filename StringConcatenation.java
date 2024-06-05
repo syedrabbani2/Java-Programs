@@ -1,12 +1,21 @@
+import java.util.Scanner;
+
 public class StringConcatenation {
     public static void main(String[] args) {
-        String str1 = "Hello";
-        String str2 = "World";
-
+        Scanner scanner = new Scanner(System.in);
         
-        String concatenatedString = str1 + " " + str2;
-
+        System.out.print("Enter the first string: ");
+        String firstString = scanner.nextLine();
         
-        System.out.println("Concatenated String: " + concatenatedString);
+        System.out.print("Enter the second string: ");
+        String secondString = scanner.nextLine();
+        
+        String concatenatedString = concatenateStrings(firstString, secondString);
+        
+        System.out.println("Concatenated string: " + concatenatedString);
+    }
+    
+    public static String concatenateStrings(String str1, String str2) {
+        return str1 + str2;
     }
 }

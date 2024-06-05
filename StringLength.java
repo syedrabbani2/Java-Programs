@@ -1,11 +1,18 @@
+import java.util.Scanner;
+
 public class StringLength {
     public static void main(String[] args) {
-        String str = "Hello, world!";
-
-    
-        int length = str.length();
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
         
-        System.out.println("Length of the string \"" + str + "\": " + length);
+        int length = findLength(input);
+        
+        System.out.println("Length of the string: " + length);
+    }
+    
+    public static int findLength(String str) {
+       
+        return str.length();
     }
 }
