@@ -1,62 +1,59 @@
-public class Main {
-    public static void main(String[] args) {
-        
-        Student student1 = new Student("Ravi", 501, 22);
-        
-        
-        System.out.println("Name: " + student1.getName());
-        System.out.println("Roll Number: " + student1.getRollNumber());
-        System.out.println("Age: " + student1.getAge());
-        
-        student1.setName("Ravi");
-        student1.setRollNumber(501);
-        student1.setAge(22);
-        
-        
-        System.out.println("\nModified Details:");
-        System.out.println("Name: " + student1.getName());
-        System.out.println("Roll Number: " + student1.getRollNumber());
-        System.out.println("Age: " + student1.getAge());
+abstract class Shape {
+    abstract double calculateArea();
+    abstract double calculatePerimeter();
+}
+
+class Circle2 extends Shape {
+    private double radius;
+
+    Circle2(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+class Rectangle1 extends Shape {
+    private double length;
+    private double width;
+
+    Rectangle1(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+
+    @Override
+    double calculatePerimeter() {
+        return 2 * (length + width);
     }
 }
 
-class Studentst {
-    
-    private String name;
-    private int rollNumber;
-    private int age;
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        System.out.println("Circle Area: " + circle.calculateArea());
+        System.out.println("Circle Perimeter: " + circle.calculatePerimeter());
 
-    
-    public Studentst(String name, int rollNumber, int age) {
-        this.name = name;
-        this.rollNumber = rollNumber;
-        this.age = age;
-    }
-
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    
-    public int getRollNumber() {
-        return rollNumber;
-    }
-
-    public void setRollNumber(int rollNumber) {
-        this.rollNumber = rollNumber;
-    }
-
-    
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+        Rectangle1 rectangle = new Rectangle1(4, 6);
+        System.out.println("Rectangle Area: " + rectangle.calculateArea());
+        System.out.println("Rectangle Perimeter: " + rectangle.calculatePerimeter());
     }
 }

@@ -1,53 +1,38 @@
+abstract class BankAccount {
+    abstract void deposit(double amount);
+    abstract void withdraw(double amount);
+}
+
+class SavingsAccount extends BankAccount {
+    void deposit(double amount) {
+        System.out.println("Depositing $" + amount + " into Savings Account...");
+    }
+
+    void withdraw(double amount) {
+        System.out.println("Withdrawing $" + amount + " from Savings Account...");
+    }
+}
+
+class CurrentAccount extends BankAccount {
+    void deposit(double amount) {
+        System.out.println("Depositing $" + amount + " into Current Account...");
+    }
+
+    void withdraw(double amount) {
+        System.out.println("Withdrawing $" + amount + " from Current Account...");
+    }
+}
+
 public class BankAccount {
-    
-    private String accountNumber;
-    private double balance;
-
-   
-    public BankAccount(String accountNumber, double initialBalance) {
-        this.accountNumber = accountNumber;
-        this.balance = initialBalance;
-    }
-
-    
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            System.out.println("Deposit of Rs." + amount + " successful.");
-        } else {
-            System.out.println("Invalid deposit amount.");
-        }
-    }
-
-  
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            System.out.println("Withdrawal of Rs." + amount + " successful.");
-        } else {
-            System.out.println("Invalid withdrawal amount or insufficient balance.");
-        }
-    }
-
-  
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
     public static void main(String[] args) {
-        
-        BankAccount account = new BankAccount("000001", 1000.0);
+        BankAccount savingsAccount = new SavingsAccount();
+        BankAccount currentAccount = new CurrentAccount();
 
-        
-        account.deposit(500.0);
-        account.withdraw(200.0);
-        account.withdraw(1500.0); 
+        // Invoking abstract methods
+        savingsAccount.deposit(1000);
+        savingsAccount.withdraw(500);
 
-        System.out.println("Account Number: " + account.getAccountNumber());
-        System.out.println("Current Balance: $" + account.getBalance());
+        currentAccount.deposit(2000);
+        currentAccount.withdraw(1000);
     }
 }
