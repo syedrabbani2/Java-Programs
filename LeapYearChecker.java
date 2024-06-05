@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class LeapYearChecker {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         
         System.out.print("Enter a year: ");
-        int year = scan.nextInt();
+        int year = scanner.nextInt();
 
         boolean isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 4== 0);
 

@@ -1,26 +1,38 @@
-public class PowerCalculator {
+import java.util.Scanner;
 
-    public static double calculatePower(double base, int exponent) {
-        double result = 1;
-        
-        
-        if (exponent < 0) {
-            base = 1 / base;
-            exponent = -exponent;
-        }
-        
-        for (int i = 0; i < exponent; i++) {
-            result *= base;
-        }
-        
-        return result;
-    }
+public class PowerCalculator{
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        double base = 2.0;
-        int exponent = 5;
-        
-        double result = calculatePower(base, exponent);
-        System.out.println(base + " raised to the power of " + exponent + " is: " + result);
-    }
+		
+		System.out.print("Enter the base number: ");
+		int base = scanner.nextInt();
+
+		System.out.print("Enter the exponent: ");
+		int exponent = scanner.nextInt();
+
+		
+		long result = calculatePower(base, exponent);
+
+		
+		System.out.println(base + " raised to the power of " + exponent + " is: " + result);
+
+		scanner.close();
+	}
+
+	
+	public static long calculatePower(int base, int exponent) {
+		if (exponent == 0) {
+			return 1;
+		} else if (exponent == 1) {
+			return base;
+		} else {
+			
+			if (exponent < 0) {
+				base = 1 / base;
+				exponent = -exponent;
+			}
+			return base * calculatePower(base, exponent - 1);
+		}
+	}
 }
